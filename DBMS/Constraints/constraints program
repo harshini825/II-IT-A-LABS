@@ -1,1 +1,27 @@
+create database employee;
+use employee;
 
+create table Friends(e_num int primary key,e_name varchar(25),age int default 20);
+insert into Friends values(111,'Monica Geller',20);
+insert into Friends values(456,'Chandler Bing',18);
+insert into Friends values(678,'Joey Tribbiani',null);
+insert into Friends(e_num,e_name) values (567,'Pheobe Buffay');
+select * from Friends;
+
+create table Vampires(rollnum int,s_name varchar(25),check(rollnum>1));
+insert into Vampires values(2,'damon salvatore');
+insert into Vampires values(32,'stefen salvatore');
+select * from Vampires;
+
+create table Originals(halltic_num int primary key,name varchar(100));
+insert into Originals values(1,'Klaus Mickealson'),(2,'Ellijah Mickealson'),(3,'Hayley Marshall');
+select * from Originals;
+
+
+
+
+create table event(evid int primary key,evname varchar(25),coor_id int,foreign key(coor_id) references student1(ht_num));
+insert into event values(13,'Ripping',1),(14,'Combat',2),(15,'Acting',3); 
+select * from event;
+
+show tables;

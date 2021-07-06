@@ -1,1 +1,38 @@
+create database Busticketres;
+use Busticketres;
+create table bus(bus_num int primary key,source varchar(30),destination varchar(30));
+insert into bus values(1,'hyderabad','vijayawada');
+insert into bus values(2,'khammam','hyderabad');
+insert into bus values(3,'karimnagar','warangal');
+insert into bus values(4,'vijayawada','guntur');
+Select * from bus;
+select bus_num,source,destination from bus;
+update bus set source = 'Chennai' where bus_num = 1;
+alter table bus add Driver_Name varchar(20);
+Select* from bus;
 
+create table passenger(p_no int primary key,p_name varchar(20),p_age int,p_gender varchar(6),p_seatnum int);
+insert into passenger values(01,'Damon',24,'Male',12);
+insert into passenger values(02,'Stefan',19,'Male',13);
+insert into passenger values(03,'Elena',19,'Female',14);
+insert into passenger values(04,'Caroline',19,'Female',15);
+Select * from passenger;
+
+create table ticket(t_num int primary key,t_date Date,source varchar(20),destination varchar(20));
+insert into ticket values(1,'2021-06-23','hyderabad','vijayawada');
+insert into ticket values(2,'2021-06-22','khammam','kothagudem');
+insert into ticket values(3,'2021-06-21','guntur','nandyala');
+Select * from ticket;
+delete from ticket where t_num = 1;
+Select * from ticket;
+
+create table reservation(PNRNo int(10), foreign key(PNRNo) references passenger(PNRNo),Journey_date date, No_of_seats int,Address Varchar(40),Contact_No int(10),Status Char(2));
+insert into reservation values('01','2021-06-23',4,'kothagudem',555555,'R');
+insert into reservation values('02','2021-06-22',3,'guntur',22222,'R');
+update reservation set Contact_No = 32145 where PNRNo = 02;
+Select * from reservation;
+
+create table cancellation(p_no int, foreign key(p_no) references passenger(p_no),c_date date,source varchar(20),destination varchar(20),no_seats int,contact_num int);
+insert into cancellation values(01,'2021-06-23','hyderabad','vijayawada',4,555555);
+Select * from cancellation;
+show tables;
